@@ -10,6 +10,11 @@
       "StackName": "amplify-notetaker-dev-200156",
       "StackId": "arn:aws:cloudformation:us-east-1:814186804337:stack/amplify-notetaker-dev-200156/a0617c30-ddb0-11ee-adf0-0e81bb755089",
       "AmplifyAppId": "d1xfdli22nkf1k"
+    },
+    "categories": {
+      "api": {
+        "notetaker": {}
+      }
     }
   }
 }
