@@ -1,4 +1,4 @@
-###Note Taker
+### Note Taker
 
 Created React Native application that allows a user to take notes
 
