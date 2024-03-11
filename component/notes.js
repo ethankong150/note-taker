@@ -10,35 +10,54 @@ function Notes() {
 
   // Fetches notes from DataStore on update and on mount
   useEffect(() => {
+    try {
       fetchNotes();
-  
-      // Call fetchNotes on any CRUD operation
+
       const subscription = DataStore.observe(Note).subscribe(msg => {
         fetchNotes();
       });
-
+  
       return () => subscription.unsubscribe();
+    } catch (error) {
+      console.error("Error loading notes: "+error);
+    }
+  
+      // Call fetchNotes on any CRUD operation
   }, []);
   
   async function fetchNotes() {
-    const notesData = await DataStore.query(Note);
-    setNotes(notesData);
+    try {
+
+      const notesData = await DataStore.query(Note);
+      setNotes(notesData);
+    } catch (error) {
+      console.error("Error fetching notes: "+error);
+    }
   }
   
   const addNote = async () => {
-  if (note.trim().length > 0) {
-      await DataStore.save(new Note({
-      message: note
-      }));
-
-      setNote('');
-      await fetchNotes();
+    try {
+      if (note.trim().length > 0) {
+        await DataStore.save(new Note({
+        message: note
+        }));
+  
+        setNote('');
+        await fetchNotes();
+        }
+      } catch (error) {
+        console.error("Error adding note: "+error);
+      }
     }
-  };
+  
   
   const deleteNote = async (id) => {
-  await DataStore.delete(Note, id);
-  await fetchNotes();
+    try {
+      await DataStore.delete(Note, id);
+      await fetchNotes();
+    } catch (error) {
+      console.error("Error deleting note: "+error);
+    }
   };
   
   const renderNote = ({ item }) => (

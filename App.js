@@ -5,7 +5,11 @@ import Notes from './component/notes';
 import { Amplify } from 'aws-amplify';
 import awsmobile from './src/aws-exports';
 
-Amplify.configure(awsmobile);
+try {
+  Amplify.configure(awsmobile);
+} catch (error) {
+  console.error("Error configuring Amplify: "+error);
+}
  
 export default function App() {
   return (
