@@ -7,3 +7,8 @@ Capabilities:
  - Notes preload when reopening application
  - When taking notes offline, notes will sync to table when reconnecting to internet
  - Notes can be deleted
+
+Tech:
+ - Expo
+ - Amplify - Data Store
+ - AWS AppSync
