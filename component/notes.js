@@ -4,6 +4,8 @@ import { SafeAreaView, View, TextInput, Button, FlatList, Text, TouchableOpacity
 import { DataStore } from '@aws-amplify/datastore';
 import { Note } from '../src/models'; 
 
+// Notes component
+// TODO: consider abstracting fetchNotes, addNote, and deleteNote into a custom hook
 function Notes() {
   const [note, setNote] = useState('');
   const [notes, setNotes] = useState([]);
@@ -49,7 +51,6 @@ function Notes() {
         console.error("Error adding note: "+error);
       }
     }
-  
   
   const deleteNote = async (id) => {
     try {
